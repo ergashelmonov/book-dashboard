@@ -1,20 +1,17 @@
-import { useEffect, useState } from "react";
-import axiosInstance from "../../utils/api";
+import { useEffect } from "react";
 import { BookCard } from "../../components";
+import { useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { getOrderProducts } from "../../features";
+import { useSelector } from "react-redux";
 
 export const Order = () => {
-  interface CardProps {
-    id: number;
-    name: string;
-    description: string;
-    price: string;
-    image: string;
-  }
-  const [data, setData] = useState<CardProps[]>([]);
-
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    axiosInstance.get("/cart").then((data) => setData(data.data));
+    dispatch(getOrderProducts());
   }, []);
+
+  const { orders } = useSelector((state: RootState) => state.product);
 
   return (
     <div className="w-full flex flex-col gap-10 items-center pt-20 bg-black h-screen overflow-scroll hide-scrollbar bg-[url(/public/img/bg_home.png)] bg-no-repeat bg-cover">
@@ -24,7 +21,7 @@ export const Order = () => {
         </h1>
       </div>
       <div className="flex flex-wrap max-w-[888px] gap-5">
-        {data.map((item) => {
+        {orders.map((item) => {
           return <BookCard key={item.id} {...item} />;
         })}
       </div>
