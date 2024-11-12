@@ -14,7 +14,7 @@ export const delProducts = createAsyncThunk(
       .delete(`/products/${id}`)
       .then((data) => data.data);
 
-    dispatch(getProducts())
+    setTimeout(() => dispatch(getProducts()), 1000);
     dispatch(setDel(false));
     return req;
   }
@@ -34,7 +34,7 @@ export const postProducts = createAsyncThunk(
       .post(`/products`, obj)
       .then((data) => data.data);
 
-    dispatch(getProducts());
+    setTimeout(() => dispatch(getProducts()), 1000);
     return req;
   }
 );
@@ -53,7 +53,7 @@ export const editProducts = createAsyncThunk(
       .patch(`/products/${obj.id}`, obj)
       .then((data) => data.data);
 
-    dispatch(getProducts());
+    setTimeout(() => dispatch(getProducts()), 1000);
     dispatch(setEdit(false));
     return req;
   }
@@ -73,8 +73,7 @@ export const notif = createAsyncThunk(
     const req = await axiosInstance
       .post(`/notification/`, obj)
       .then((data) => data.data);
-
-    dispatch(getNotif());
+    setTimeout(() => dispatch(getNotif()), 1000);
     return req;
   }
 );
@@ -111,8 +110,7 @@ export const delNotif = createAsyncThunk(
     const req = await axiosInstance
       .delete(`/notification/${id}`)
       .then((data) => data.data);
-
-    dispatch(getNotif());
+    setTimeout(() => dispatch(getNotif()), 1000);
 
     return req;
   }
@@ -169,7 +167,6 @@ const productSlice = createSlice({
       state.orders = action.payload;
     });
     api.addCase(getNotif.fulfilled, (state, action) => {
-     
       state.notif = action.payload;
       state.not = action.payload.length;
     });
