@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { DeletePopup, EditPopup } from "..";
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
+import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 import { orderProducts } from "../../features";
 

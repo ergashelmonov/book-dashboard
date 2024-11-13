@@ -47,7 +47,7 @@ export const EditPopup: React.FC<CardProps> = ({
     >
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col bg-slate-700 p-8 rounded-2xl gap-2 text-slate-100"
+        className="flex flex-col bg-slate-700 w-96 p-8 rounded-2xl gap-2 text-slate-100"
       >
         <h2 className="text-white text-center text-2xl">Edit</h2>
         <label htmlFor="name">Name</label>
@@ -74,7 +74,7 @@ export const EditPopup: React.FC<CardProps> = ({
           name="price"
           className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
         />
-        <button className="bg-lime-600">Save</button>
+        <button className="bg-lime-600 p-2">Save</button>
       </form>
     </div>
   );

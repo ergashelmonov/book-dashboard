@@ -43,7 +43,7 @@ export const Layout = () => {
         >
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col bg-slate-700 p-8 rounded-2xl gap-2 text-slate-100"
+            className="flex flex-col w-96 bg-slate-700 p-8 rounded-2xl gap-2 text-slate-100"
           >
             <h2>Add Book</h2>
             <label htmlFor="image">Image url</label>
@@ -70,7 +70,7 @@ export const Layout = () => {
               onChange={(e) => setDescription(e.target.value)}
               type="text"
               name="description"
-              className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
+              className="text-[#a59f9f] p-2 outline-none  border border-solid border-[#cc9600] rounded-md bg-slate-600"
               required
             />
             <label htmlFor="price">Cost</label>
@@ -82,7 +82,7 @@ export const Layout = () => {
               className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
               required
             />
-            <button className="bg-lime-600">Add</button>
+            <button className="bg-lime-600 p-2">Add</button>
           </form>
         </div>
       )}
