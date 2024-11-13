@@ -14,7 +14,7 @@ export const delProducts = createAsyncThunk(
       .delete(`/products/${id}`)
       .then((data) => data.data);
 
-    setTimeout(() => dispatch(getProducts()), 1000);
+    setTimeout(() => dispatch(getProducts()), 100);
     dispatch(setDel(false));
     return req;
   }
@@ -34,7 +34,7 @@ export const postProducts = createAsyncThunk(
       .post(`/products`, obj)
       .then((data) => data.data);
 
-    setTimeout(() => dispatch(getProducts()), 1000);
+    setTimeout(() => dispatch(getProducts()), 100);
     return req;
   }
 );
@@ -53,7 +53,7 @@ export const editProducts = createAsyncThunk(
       .patch(`/products/${obj.id}`, obj)
       .then((data) => data.data);
 
-    setTimeout(() => dispatch(getProducts()), 1000);
+    setTimeout(() => dispatch(getProducts()), 100);
     dispatch(setEdit(false));
     return req;
   }
@@ -73,7 +73,7 @@ export const notif = createAsyncThunk(
     const req = await axiosInstance
       .post(`/notification/`, obj)
       .then((data) => data.data);
-    setTimeout(() => dispatch(getNotif()), 1000);
+    setTimeout(() => dispatch(getNotif()), 100);
     return req;
   }
 );
@@ -110,7 +110,7 @@ export const delNotif = createAsyncThunk(
     const req = await axiosInstance
       .delete(`/notification/${id}`)
       .then((data) => data.data);
-    setTimeout(() => dispatch(getNotif()), 1000);
+    setTimeout(() => dispatch(getNotif()), 100);
 
     return req;
   }

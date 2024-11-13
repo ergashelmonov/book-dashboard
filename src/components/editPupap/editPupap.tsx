@@ -1,13 +1,14 @@
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
-import { editProducts, setEdit } from "../../features";
+import { editProducts } from "../../features";
 
 interface CardProps {
   id: number;
   name: string;
   description: string;
   price: string;
+  setEdit: (i: boolean) => void;
 }
 
 export const EditPopup: React.FC<CardProps> = ({
@@ -15,12 +16,14 @@ export const EditPopup: React.FC<CardProps> = ({
   name,
   description,
   price,
+  setEdit,
 }) => {
   const [editName, setEditName] = useState(name);
   const [editPrice, setEditPrice] = useState(price);
   const [editDescription, setEditDescription] = useState(description);
 
   const dispatch = useDispatch<AppDispatch>();
+  console.log(id);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -32,12 +35,13 @@ export const EditPopup: React.FC<CardProps> = ({
         price: editPrice,
       })
     );
+    setEdit(false);
   };
 
   return (
     <div
       onClick={(e) => {
-        e.target === e.currentTarget && dispatch(setEdit(false));
+        e.target === e.currentTarget && setEdit(false);
       }}
       className="fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.4)] flex justify-center items-center"
     >

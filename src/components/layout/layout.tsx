@@ -24,6 +24,10 @@ export const Layout = () => {
         price,
       })
     );
+    setName("");
+    setDescription("");
+    setPrice("");
+    setImage("");
 
     setAdd(false);
   };
@@ -49,6 +53,7 @@ export const Layout = () => {
               type="text"
               name="image"
               className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
+              required
             />
             <label htmlFor="name">Name</label>
             <input
@@ -57,6 +62,7 @@ export const Layout = () => {
               type="text"
               name="name"
               className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
+              required
             />
             <label htmlFor="description">Description</label>
             <input
@@ -65,6 +71,7 @@ export const Layout = () => {
               type="text"
               name="description"
               className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
+              required
             />
             <label htmlFor="price">Cost</label>
             <input
@@ -73,6 +80,7 @@ export const Layout = () => {
               type="text"
               name="price"
               className="text-[#a59f9f] p-2 outline-none border border-solid border-[#cc9600] rounded-md bg-slate-600"
+              required
             />
             <button className="bg-lime-600">Add</button>
           </form>

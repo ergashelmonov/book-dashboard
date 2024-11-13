@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { DeletePopup, EditPopup } from "..";
 import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { useDispatch } from "react-redux";
-import { orderProducts, setDel, setEdit } from "../../features";
+import { orderProducts } from "../../features";
 
 interface CardProps {
   id: number;
@@ -24,6 +24,8 @@ export const BookCard: React.FC<CardProps> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   const { pathname } = useLocation();
+  const [edit, setEdit] = useState(false);
+  const [del, setDel] = useState(false);
 
   const buy = () => {
     dispatch(
@@ -37,12 +39,10 @@ export const BookCard: React.FC<CardProps> = ({
     );
   };
 
-  const { del, edit } = useSelector((state: RootState) => state.product);
-
   return (
     <>
-      {edit && <EditPopup {...{ id, name, description, price }} />}
-      {del && <DeletePopup id={id} />}
+      {edit && <EditPopup {...{ id, name, description, price, setEdit }} />}
+      {del && <DeletePopup id={id} setDel={setDel} />}
       <div className="w-[264px] bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
         <img src={image} alt={name} className="w-full h-48 object-cover" />
         <div className="p-4">
@@ -58,14 +58,14 @@ export const BookCard: React.FC<CardProps> = ({
                 Buy
               </button>
               <button
-                onClick={() => dispatch(setEdit(true))}
+                onClick={() => setEdit(true)}
                 className="w-full mt-4 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded hover:bg-red-700"
               >
                 Edit
               </button>
               <button
                 onClick={() => {
-                  dispatch(setDel(true));
+                  setDel(true);
                 }}
                 className="w-full mt-1 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded hover:bg-red-700"
               >

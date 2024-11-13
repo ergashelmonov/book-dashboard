@@ -3,16 +3,24 @@ import "./App.css";
 import { Home, Login, Notification, Order, Product } from "./pages";
 import { useEffect } from "react";
 import { Layout } from "./components";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "./store";
+import { getNotif } from "./features";
 
 function App() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     localStorage.getItem("dtoken")
       ? navigate(pathname == "/login" ? "/" : { pathname })
       : navigate("/login");
   }, [localStorage.getItem("dtoken")]);
+
+  useEffect(() => {
+    dispatch(getNotif());
+  }, []);
 
   return (
     <>
